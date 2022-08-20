@@ -16,5 +16,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DBHelper db = new DBHelper(MainActivity.this);
+
+        db.Adddata("FAizan","adasda", "asdasd","asdasda");
+
+
     }
 }
