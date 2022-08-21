@@ -39,6 +39,13 @@ public class Contact {
         this.dob = dob;
     }
 
+    @Override
+    public String toString() {
+        return "Name = " + name + "\n" +
+                "Contact = " + contact + "\n" +
+                "Email = " + email + "\n" +
+                "Dob = " + dob;
+    }
 
     public String getId()
     { return this.contact;
