@@ -159,12 +159,38 @@ public class ViewAllActivity extends AppCompatActivity {
         dialog.getWindow().setLayout(width,height);
         dialog.show();
 
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Contact cc = new Contact();
+                cc.name=edtName.getText().toString().trim();
+                cc.email=edtEmail.getText().toString().trim();
+                cc.contact=edtContact.getText().toString().trim();
+                cc.dob= edtDob.getText().toString().trim();
+
+
+                try {
+                    db.updateData(cc.name,cc.email,cc.contact,cc.dob,id);
+
+
+                    dialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "Update Successfull", Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception error){
+                    Log.e("Update error", error.getMessage());
+                }
+                Intent homepage = new Intent(ViewAllActivity.this,ViewAllActivity.class);
+                startActivity(homepage);
+            }
+
+
+        });
 
 
 
 
 
-  
+
 
 
 
