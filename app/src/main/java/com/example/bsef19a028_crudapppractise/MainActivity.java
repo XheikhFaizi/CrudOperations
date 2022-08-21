@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         db.Adddata(Contact1);
         db.Adddata(Contact2);
 
+        Contact2.name="IMRAAAN PASHA";
+
+        db.update(Contact2);
 
 
 

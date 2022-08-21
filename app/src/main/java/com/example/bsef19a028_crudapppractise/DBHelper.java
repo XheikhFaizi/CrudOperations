@@ -84,22 +84,11 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public void deletecontact(String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("UserDetails","contact" + "=?", new String[]{String.valueOf(id)});
+    }
 }
 
 
