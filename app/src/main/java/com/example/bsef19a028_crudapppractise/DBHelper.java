@@ -5,12 +5,57 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
+
+
+
+    public void queryData(String sql){
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql);
+    }
+    public Cursor getData(String sql){
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(sql, null);
+    }
+
+
+    //deleteData
+    public void deleteData(int id){
+        SQLiteDatabase database = getWritableDatabase();
+        //query to delete record using id
+        String sql = "DELETE FROM RECORD WHERE id=?";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindDouble(1, (double)id);
+
+        statement.execute();
+        database.close();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public DBHelper(Context context) {
         super(context, "Userdata.db", null, 1);
 

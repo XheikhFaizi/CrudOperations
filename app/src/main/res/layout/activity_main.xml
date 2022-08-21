@@ -12,21 +12,23 @@
         android:id="@+id/imageView"
         android:layout_width="250dp"
         android:layout_height="226dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toTopOf="@+id/button19"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.909"
         app:srcCompat="@drawable/_16110523_294755839344213_744952498267450183_n_removebg_preview" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button14"
+        android:id="@+id/button12"
         android:layout_width="150dp"
         android:layout_height="60dp"
 
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="156dp"
         android:background="@drawable/rect_rounded_button"
-        android:text="Delete"
+        android:text="Add Data"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="20sp"
@@ -36,43 +38,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button13"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rect_rounded_button"
-        android:text="Update "
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button14"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button12"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rect_rounded_button"
-        android:text="Add Data"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button13"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button19"
         android:layout_width="150dp"
         android:layout_height="60dp"
 
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/rect_rounded_button"
         android:text="View All"
         android:textColor="#FFFFFF"

@@ -35,23 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        update= findViewById(R.id.button13);
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this , UpdateActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        delete= findViewById(R.id.button14);
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this , DeleteActivity.class);
-                startActivity(intent);
-            }
-        });
 
         view= findViewById(R.id.button19);
         view.setOnClickListener(new View.OnClickListener() {
