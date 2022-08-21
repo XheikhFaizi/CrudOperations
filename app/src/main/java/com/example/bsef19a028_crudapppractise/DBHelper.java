@@ -42,20 +42,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public DBHelper(Context context) {
         super(context, "Userdata.db", null, 1);
 
@@ -111,6 +97,22 @@ public class DBHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
     return contactlist;
+    }
+    public void updateData(String name, String email, String contact, String dob ,String Id){
+        SQLiteDatabase database = getWritableDatabase();
+        //query to update record
+        String sql = "UPDATE UserDetails SET name=?, contact=?, email=?,  dob=? WHERE contact=?";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+
+        statement.bindString(1, name);
+        statement.bindString(2, contact);
+        statement.bindString(3, email);
+        statement.bindString(4, dob);
+        statement.bindString(5, Id);
+
+        statement.execute();
+        database.close();
     }
 
     public int update(Contact cc)

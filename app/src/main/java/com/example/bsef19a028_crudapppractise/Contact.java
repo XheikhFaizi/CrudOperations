@@ -41,10 +41,10 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "Name = " + name + "\n" +
-                "Contact = " + contact + "\n" +
-                "Email = " + email + "\n" +
-                "Dob = " + dob;
+        return  "Name      :      " + name + "\n" +
+                "Contact   :      " + contact + "\n" +
+                "Email       :      " + email + "\n" +
+                "DOB         :      " + dob;
     }
 
     public String getId()

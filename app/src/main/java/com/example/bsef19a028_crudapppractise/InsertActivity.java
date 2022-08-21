@@ -17,13 +17,5 @@ public class InsertActivity extends AppCompatActivity {
         setContentView(R.layout.activity_insert);
 
 
-        back= findViewById(R.id.button);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(InsertActivity.this , MainActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

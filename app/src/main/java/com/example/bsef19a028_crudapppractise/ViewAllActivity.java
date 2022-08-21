@@ -3,6 +3,8 @@ package com.example.bsef19a028_crudapppractise;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.content.DialogInterface;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -44,21 +47,6 @@ public class ViewAllActivity extends AppCompatActivity {
                 (ViewAllActivity.this, android.R.layout.simple_list_item_1, mylust);
 
 
-        Contact Contact1 = new Contact();
-        Contact1.name = "Con1";
-        Contact1.contact = "312312";
-        Contact1.email = "asdas";
-        Contact1.dob = "625365127";
-
-        Contact Contact2 = new Contact();
-        Contact2.name = "Con2";
-        Contact2.contact = "8734282";
-        Contact2.email = "asdas";
-        Contact2.dob = "625365127";
-
-        db.Adddata(Contact1);
-        db.Adddata(Contact2);
-
 
 
         lsView.setAdapter(arrayAdapter);
@@ -86,16 +74,17 @@ public class ViewAllActivity extends AppCompatActivity {
                 dialog.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (i == 0) {
+                        if (i == 0)
+                        {
                             //update
+                            Cursor cv = db.getData("SELECT contact FROM UserDetails");
 
-                            Cursor c = db.getData("SELECT id FROM RECORD");
-
-                            ArrayList<Integer> arrID = new ArrayList<Integer>();
-                            while (c.moveToNext()) {
-                                arrID.add(c.getInt(0));
+                            ArrayList<String> arrID = new ArrayList<String>();
+                            while (cv.moveToNext()) {
+                                arrID.add(cv.getString(0));
                             }
                             //show update dialog
+                             showDialogUpdate(ViewAllActivity.this, arrID.get(position));
                         }
                         if (i == 1) {
                             //delete
@@ -132,7 +121,7 @@ public class ViewAllActivity extends AppCompatActivity {
                        db.deletecontact(idRecord);
 
                         Toast.makeText(ViewAllActivity.this, "Delete successfully", Toast.LENGTH_SHORT).show();
-                        Intent homepage = new Intent(ViewAllActivity.this, MainActivity.class);
+                        Intent homepage = new Intent(ViewAllActivity.this,ViewAllActivity.class);
                         startActivity(homepage);
 
                     }
@@ -151,7 +140,64 @@ public class ViewAllActivity extends AppCompatActivity {
             dialogDelete.show();
         }
 
+    private void showDialogUpdate(Activity activity, String id){
+        final Dialog dialog = new Dialog(activity);
+        dialog.setContentView(R.layout.activity_insert);
+        dialog.setTitle("Update");
 
+
+         EditText edtName = dialog.findViewById(R.id.edtName);
+         EditText edtEmail = dialog.findViewById(R.id.Email);
+         EditText edtContact = dialog.findViewById(R.id.edtPhone);
+         EditText edtDob = dialog.findViewById(R.id.edtdob);
+        Button btnUpdate = dialog.findViewById(R.id.btnUpdate);
+
+        //set width of dialog
+        int width = (int)(activity.getResources().getDisplayMetrics().widthPixels*0.95);
+        //set hieght of dialog
+        int height = (int)(activity.getResources().getDisplayMetrics().heightPixels*0.7);
+        dialog.getWindow().setLayout(width,height);
+        dialog.show();
+
+
+
+
+
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Contact cc = new Contact();
+                cc.name=edtName.getText().toString().trim();
+                cc.email=edtEmail.getText().toString().trim();
+                cc.contact=edtContact.getText().toString().trim();
+                cc.dob= edtDob.getText().toString().trim();
+
+
+                try {
+                    db.updateData(cc.name,cc.email,cc.contact,cc.dob,id);
+
+
+                    dialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "Update Successfull", Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception error){
+                    Log.e("Update error", error.getMessage());
+                }
+                Intent homepage = new Intent(ViewAllActivity.this,ViewAllActivity.class);
+                startActivity(homepage);
+            }
+
+
+        });
+
+
+
+
+
+
+
+    }
 
 
     }
